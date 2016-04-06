@@ -10,6 +10,7 @@
 #import "itemCell.h"
 #import "objectStorage.h"
 #import "object.h"
+#import "temp.h"
 
 
 
@@ -19,6 +20,9 @@
     [super viewDidLoad];
     UINib *nib = [UINib nibWithNibName:@"itemCell" bundle:nil];
     [self.tableView registerNib:nib forCellReuseIdentifier:@"itemCell"];
+    NSArray *arr = [NSArray arrayWithObjects:@"消息",@"电话",nil];
+    UISegmentedControl *segment = [[UISegmentedControl alloc]initWithItems:arr];
+    self.navigationItem.titleView = segment;
 }
 
 -(instancetype)init{
@@ -58,4 +62,12 @@
     return cell;
 }
 
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    temp *tempViewController = [[temp alloc]init];
+    
+    NSArray *items = [[objectStorage sharedStore] allItems];
+    object *selectedItem = items[indexPath.row];
+    tempViewController.item = selectedItem;
+    [self.navigationController pushViewController:tempViewController animated:YES];
+}
 @end

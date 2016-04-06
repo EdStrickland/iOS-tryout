@@ -10,6 +10,8 @@
 #import "timeTableViewCOntroller.h"
 #import "HypnotizeViewController.h"
 #import "firstView.h"
+#import "temp.h"
+#import "navControl.h"
 
 @interface AppDelegate ()
 
@@ -22,16 +24,27 @@
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen]bounds]];
     firstView *view = [[firstView alloc] init];
     timeTableViewController *firstViewController = [[timeTableViewController alloc]init];
-    HypnotizeViewController *secondViewController = [[HypnotizeViewController alloc]init];
+    timeTableViewController *secondViewController = [[timeTableViewController alloc]init];
+    HypnotizeViewController *drawViewController = [[HypnotizeViewController alloc]init];
     secondViewController.view = view;
 //    UITabBarItem *item1 = [[UITabBarItem alloc]initWithTitle:@"Time Table" image:nil tag:0];
 //    UITabBarItem *item2 = [[UITabBarItem alloc]initWithTitle:@"Hypnotize" image:nil tag:1];
 //    firstViewController.tabBarItem = item1;
 //    secondViewController.tabBarItem = item2;
     UITabBarController *tabBar = [[UITabBarController alloc] init];
-    tabBar.viewControllers = @[firstViewController,secondViewController];
-    UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:tabBar];
-    self.window.rootViewController = navController;
+    firstViewController.navigationItem.title=@"消息";
+    secondViewController.navigationItem.title=@"动态";
+    firstViewController.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemCamera target:self action:Nil];
+    firstViewController.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:Nil];
+    navControl *navController = [[navControl alloc] initWithRootViewController:firstViewController];
+    navControl *navControllerSecond = [[navControl alloc] initWithRootViewController:secondViewController];
+    
+    navController.tabBarItem.title = @"tabItem1";
+    navControllerSecond.tabBarItem.title = @"tabItem2";
+    
+    tabBar.viewControllers = @[navController,navControllerSecond];
+    
+    self.window.rootViewController = tabBar;
     view.backgroundColor = [UIColor whiteColor];
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
