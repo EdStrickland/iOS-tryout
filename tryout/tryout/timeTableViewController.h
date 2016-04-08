@@ -8,6 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
+@class itemCell;
+
 @interface timeTableViewController : UITableViewController
+
+@property (nonatomic, strong) itemCell *prototypeCell;
 
 @end

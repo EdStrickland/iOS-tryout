@@ -32,7 +32,7 @@
 //    firstViewController.tabBarItem = item1;
 //    secondViewController.tabBarItem = item2;
     UITabBarController *tabBar = [[UITabBarController alloc] init];
-    firstViewController.navigationItem.title=@"消息";
+    firstViewController.navigationItem.title=@"朋友圈";
     secondViewController.navigationItem.title=@"动态";
     firstViewController.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemCamera target:self action:Nil];
     firstViewController.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:Nil];
@@ -42,9 +42,12 @@
     navController.tabBarItem.title = @"tabItem1";
     navControllerSecond.tabBarItem.title = @"tabItem2";
     
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
+    
     tabBar.viewControllers = @[navController,navControllerSecond];
     
     self.window.rootViewController = tabBar;
+    
     view.backgroundColor = [UIColor whiteColor];
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
