@@ -44,8 +44,8 @@
     self.navigationBar.tintColor = [UIColor whiteColor];
     [self.navigationBar setTitleTextAttributes:[NSDictionary dictionaryWithObject:[UIColor whiteColor] forKey:NSForegroundColorAttributeName]];
     self.navigationBar.layer.borderWidth = 0.0;
-    [[UINavigationBar appearance] setBackgroundImage:[[UIImage imageNamed:@"default.png"] init] forBarMetrics:UIBarMetricsDefault];
-    [[UINavigationBar appearance] setShadowImage:[[UIImage imageNamed:@"default.png"] init]];
+//    [[UINavigationBar appearance] setBackgroundImage:[[UIImage imageNamed:@"default.png"] init] forBarMetrics:UIBarMetricsDefault];
+//    [[UINavigationBar appearance] setShadowImage:[[UIImage imageNamed:@"default.png"] init]];
 //    if ([UINavigationBar instancesRespondToSelector:@selector(setShadowImage:)]){
 //        [[UINavigationBar appearance] setShadowImage:[UIImage imageWithColor:[UIColor clearColor] size:CGSizeMake(320, 3)]];
 //    }

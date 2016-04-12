@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import "timeTableViewCOntroller.h"
+#import "circleTableViewCOntroller.h"
 #import "HypnotizeViewController.h"
 #import "firstView.h"
 #import "temp.h"
@@ -23,28 +24,23 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen]bounds]];
     firstView *view = [[firstView alloc] init];
-    timeTableViewController *firstViewController = [[timeTableViewController alloc]init];
+    circleTableViewController *firstViewController = [[circleTableViewController alloc]init];
     timeTableViewController *secondViewController = [[timeTableViewController alloc]init];
-    HypnotizeViewController *drawViewController = [[HypnotizeViewController alloc]init];
-    secondViewController.view = view;
-//    UITabBarItem *item1 = [[UITabBarItem alloc]initWithTitle:@"Time Table" image:nil tag:0];
-//    UITabBarItem *item2 = [[UITabBarItem alloc]initWithTitle:@"Hypnotize" image:nil tag:1];
-//    firstViewController.tabBarItem = item1;
-//    secondViewController.tabBarItem = item2;
+
     UITabBarController *tabBar = [[UITabBarController alloc] init];
-    firstViewController.navigationItem.title=@"朋友圈";
-    secondViewController.navigationItem.title=@"动态";
+    firstViewController.navigationItem.title=@"发现";
+    secondViewController.navigationItem.title=@"朋友圈";
     firstViewController.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemCamera target:self action:Nil];
     firstViewController.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:Nil];
     navControl *navController = [[navControl alloc] initWithRootViewController:firstViewController];
     navControl *navControllerSecond = [[navControl alloc] initWithRootViewController:secondViewController];
     
-    navController.tabBarItem.title = @"tabItem1";
-    navControllerSecond.tabBarItem.title = @"tabItem2";
+    navController.tabBarItem.title = @"发现";
+    navControllerSecond.tabBarItem.title = @"朋友圈";
     
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
     
-    tabBar.viewControllers = @[navController,navControllerSecond];
+    tabBar.viewControllers = @[navControllerSecond,navController];
     
     self.window.rootViewController = tabBar;
     

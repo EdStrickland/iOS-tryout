@@ -38,7 +38,7 @@
 -(instancetype)init{
     self = [super initWithStyle:UITableViewStylePlain];
     if(self){
-        self.tabBarItem.title = @"Time Table";
+        self.tabBarItem.title = @"朋友圈";
         for (int i = 0; i < 7; i ++){
             [[objectStorage sharedStore] createItem];
         }
@@ -50,7 +50,7 @@
 -(instancetype)initWithStyle:(UITableViewStyle)style{
     self = [super initWithStyle:style];
     if(self)
-        self.tabBarItem.title = @"Time Table";
+        self.tabBarItem.title = @"朋友圈";
     return self;
 }
 
@@ -83,6 +83,7 @@
         CGSize size = [cell.labelNum sizeThatFits:CGSizeMake(cell.labelNum.frame.size.width, MAXFLOAT)];
         cell.labelNum.frame = CGRectMake(cell.labelNum.frame.origin.x, cell.labelNum.frame.origin.y, cell.labelNum.frame.size.width, size.height);
         [cell setSeparatorInset:UIEdgeInsetsZero];
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
 //        tableView.separatorColor = [UIColor grayColor];
         return cell;
     }else{
@@ -98,17 +99,18 @@
         cell.userPic.layer.borderWidth=0.3;
         cell.separatorInset = UIEdgeInsetsMake(0, 0, 0, cell.bounds.size.width - 10);
 //        tableView.separatorColor = [UIColor whiteColor];
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
         return cell;
     }
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    temp *tempViewController = [[temp alloc]init];
-    
-    NSArray *items = [[objectStorage sharedStore] allItems];
-    object *selectedItem = items[indexPath.row];
-    tempViewController.item = selectedItem;
-    [self.navigationController pushViewController:tempViewController animated:YES];
+//    temp *tempViewController = [[temp alloc]init];
+//    
+//    NSArray *items = [[objectStorage sharedStore] allItems];
+//    object *selectedItem = items[indexPath.row];
+//    tempViewController.item = selectedItem;
+//    [self.navigationController pushViewController:tempViewController animated:YES];
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
